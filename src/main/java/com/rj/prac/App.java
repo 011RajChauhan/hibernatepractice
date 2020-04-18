@@ -1,7 +1,6 @@
 package com.rj.prac;
 
 import com.rj.prac.entities.Address;
-import com.rj.prac.entities.Student;
 import com.rj.prac.entities.User;
 import com.rj.prac.util.HibernateUtil;
 import org.hibernate.Session;

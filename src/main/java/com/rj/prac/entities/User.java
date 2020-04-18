@@ -1,8 +1,6 @@
 package com.rj.prac.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -12,9 +10,14 @@ public class User {
     private int id;
     private String name;
 
-
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city", column = @Column(name="user_home_city")),
+            @AttributeOverride(name="country", column = @Column(name="user_home_country")),
+    })
     private Address HomeAddress;
 
+    @Embedded
     private Address OfficeAddress;
 
 

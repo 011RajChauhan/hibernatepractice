@@ -1,6 +1,5 @@
 package com.rj.prac.util;
 
-import com.rj.prac.entities.Student;
 import com.rj.prac.entities.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -29,7 +28,6 @@ public class HibernateUtil {
                 settings.put(Environment.HBM2DDL_AUTO, "create");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
-                configuration.addAnnotatedClass(Student.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
