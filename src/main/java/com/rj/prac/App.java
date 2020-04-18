@@ -18,8 +18,9 @@ public class App
         System.out.println( "-------------------------starting application -------------------" );
 
         User user = new User("Rajan Chauhan");
-        user.setOfficeAddress(new Address("noida","india"));
-        user.setHomeAddress(new Address("delhi","india"));
+
+        user.getAddresses().add(new Address("delhi","india"));
+        user.getAddresses().add(new Address("noida","india"));
 
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();

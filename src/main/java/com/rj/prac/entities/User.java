@@ -1,6 +1,8 @@
 package com.rj.prac.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -10,16 +12,8 @@ public class User {
     private int id;
     private String name;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name="city", column = @Column(name="user_home_city")),
-            @AttributeOverride(name="country", column = @Column(name="user_home_country")),
-    })
-    private Address HomeAddress;
-
-    @Embedded
-    private Address OfficeAddress;
-
+    @ElementCollection
+    private Set<Address> addresses = new HashSet<>();
 
     public User(String name) {
         this.name = name;
@@ -41,19 +35,12 @@ public class User {
         this.name = name;
     }
 
-    public Address getHomeAddress() {
-        return HomeAddress;
+    public Set<Address> getAddresses() {
+        return addresses;
     }
 
-    public Address getOfficeAddress() {
-        return OfficeAddress;
-    }
-
-    public void setOfficeAddress(Address officeAddress) {
-        OfficeAddress = officeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        HomeAddress = homeAddress;
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 }
+
