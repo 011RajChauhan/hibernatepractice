@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name = "student")
-public class Student {
+@Entity
+public class User {
 
     @Id
     @GeneratedValue
@@ -13,7 +13,12 @@ public class Student {
     private String name;
 
 
-    public Student(String name) {
+    private Address HomeAddress;
+
+    private Address OfficeAddress;
+
+
+    public User(String name) {
         this.name = name;
     }
 
@@ -31,5 +36,21 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getHomeAddress() {
+        return HomeAddress;
+    }
+
+    public Address getOfficeAddress() {
+        return OfficeAddress;
+    }
+
+    public void setOfficeAddress(Address officeAddress) {
+        OfficeAddress = officeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        HomeAddress = homeAddress;
     }
 }
